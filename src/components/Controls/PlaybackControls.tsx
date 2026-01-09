@@ -1,0 +1,76 @@
+import { Play, Pause, StepForward, Square, Shuffle } from 'lucide-react';
+import { Button } from '../UI/Button';
+
+interface PlaybackControlsProps {
+  isPlaying: boolean;
+  onPlayPause: () => void;
+  onStep: () => void;
+  onClear: () => void;
+  onRandom: () => void;
+  className?: string;
+}
+
+export function PlaybackControls({
+  isPlaying,
+  onPlayPause,
+  onStep,
+  onClear,
+  onRandom,
+  className = '',
+}: PlaybackControlsProps) {
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      <Button
+        onClick={onPlayPause}
+        variant="primary"
+        size="md"
+        className="flex items-center gap-2"
+      >
+        {isPlaying ? (
+          <>
+            <Pause size={18} />
+            Pause
+          </>
+        ) : (
+          <>
+            <Play size={18} />
+            Play
+          </>
+        )}
+      </Button>
+
+      <Button
+        onClick={onStep}
+        variant="secondary"
+        size="md"
+        className="flex items-center gap-2"
+        disabled={isPlaying}
+      >
+        <StepForward size={18} />
+        Step
+      </Button>
+
+      <Button
+        onClick={onClear}
+        variant="secondary"
+        size="md"
+        className="flex items-center gap-2"
+        disabled={isPlaying}
+      >
+        <Square size={18} />
+        Clear
+      </Button>
+
+      <Button
+        onClick={onRandom}
+        variant="ghost"
+        size="md"
+        className="flex items-center gap-2"
+        disabled={isPlaying}
+      >
+        <Shuffle size={18} />
+        Random
+      </Button>
+    </div>
+  );
+}
