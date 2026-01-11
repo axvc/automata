@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from '../UI/Button';
 
 export type BrushSize = 1 | 3 | 5;

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useGameOfLife } from './hooks/useGameOfLife';
 import { useInterval } from './hooks/useInterval';
 import { Grid } from './components/Grid/Grid';
