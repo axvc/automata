@@ -20,17 +20,17 @@ export function PlaybackControls({
   className = '',
 }: PlaybackControlsProps) {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-1 sm:gap-2 ${className}`}>
       <Button onClick={onPlayPause} variant="primary" size="md" className="flex items-center gap-2">
         {isPlaying ? (
           <>
             <Pause size={18} />
-            Pause
+            <span className="hidden sm:inline">Pause</span>
           </>
         ) : (
           <>
             <Play size={18} />
-            Play
+            <span className="hidden sm:inline">Play</span>
           </>
         )}
       </Button>
@@ -43,7 +43,7 @@ export function PlaybackControls({
         disabled={isPlaying}
       >
         <StepForward size={18} />
-        Step
+        <span className="hidden md:inline">Step</span>
       </Button>
 
       <Button
@@ -54,7 +54,7 @@ export function PlaybackControls({
         disabled={isPlaying}
       >
         <Square size={18} />
-        Clear
+        <span className="hidden md:inline">Clear</span>
       </Button>
 
       <Button
@@ -65,7 +65,7 @@ export function PlaybackControls({
         disabled={isPlaying}
       >
         <Shuffle size={18} />
-        Random
+        <span className="hidden md:inline">Random</span>
       </Button>
     </div>
   );

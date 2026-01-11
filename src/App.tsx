@@ -71,11 +71,21 @@ function App() {
     <div className="bg-bg-primary text-text-primary h-screen overflow-hidden">
       {/* Header */}
       <header className="border-bg-tertiary bg-bg-secondary shrink-0 border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="font-display text-3xl font-bold">Cellular Automata</h1>
+        <div className="container mx-auto px-3 py-3 sm:px-4 sm:py-4">
+          {/* Mobile: 2 rows, Desktop: 1 row */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {/* Row 1: Title + Generation */}
+            <div className="flex items-center justify-between sm:gap-6">
+              <h1 className="font-display text-xl font-bold sm:text-2xl lg:text-3xl">
+                <span className="sm:hidden">CA</span>
+                <span className="hidden sm:inline">Cellular Automata</span>
+              </h1>
+              <GenerationCounter generation={game.stats.generation} className="sm:hidden" />
+            </div>
+
+            {/* Row 2 on mobile, inline on desktop */}
             <div className="flex items-center gap-4">
-              <GenerationCounter generation={game.stats.generation} />
+              <GenerationCounter generation={game.stats.generation} className="hidden sm:block" />
               <PlaybackControls
                 isPlaying={game.isPlaying}
                 onPlayPause={() => game.setIsPlaying(!game.isPlaying)}
@@ -120,8 +130,8 @@ function App() {
               <h2 className="font-display mb-4 text-xl font-bold">Stats</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <StatCard label="Alive" value={game.stats.alive.toLocaleString()} />
-                <StatCard label="Born" value={`+${game.stats.births.toLocaleString()}`} />
-                <StatCard label="Died" value={`-${game.stats.deaths.toLocaleString()}`} />
+                <StatCard label="Born" value={game.stats.births.toLocaleString()} />
+                <StatCard label="Died" value={game.stats.deaths.toLocaleString()} />
               </div>
               <div className="mt-4">
                 <PopulationGraph data={populationHistory} />
