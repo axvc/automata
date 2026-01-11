@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background */
+    --bg-primary: #0a0a0b;
+    --bg-secondary: #111113;
+    --bg-tertiary: #1a1a1d;
+
+    /* Cells - три канала */
+    --cell-cyan: #00d4ff;
+    --cell-orange: #ff8a00;
+    --cell-pink: #ff4d6d;
+
+    /* UI Accents */
+    --accent-primary: #3b82f6;
+    --accent: #3b82f6;
+    --success: #10b981;
+    --warning: #f59e0b;
+
+    /* Text */
+    --text-primary: #fafafa;
+    --text-muted: #71717a;
+    --text-dim: #3f3f46;
+
+    /* Glow */
+    --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5);
+    --glow-orange: 0 0 20px rgba(255, 138, 0, 0.5);
+    --glow-pink: 0 0 20px rgba(255, 77, 109, 0.5);
+  }
+
+
+  body {
+    @apply bg-bg-primary text-text-primary;
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
+  }
+}

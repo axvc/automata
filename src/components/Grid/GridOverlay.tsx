@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import React, { RefObject } from 'react';
 import { useMousePosition } from '../../hooks/useMousePosition';
 
 interface GridOverlayProps {
@@ -11,7 +11,7 @@ export function GridOverlay({ gridRef, className = '' }: GridOverlayProps) {
 
   return (
     <div
-      className={`absolute inset-0 pointer-events-none ${className}`}
+      className={`pointer-events-none absolute inset-0 ${className}`}
       style={{
         background: `radial-gradient(
           circle at ${mousePos.x}px ${mousePos.y}px,

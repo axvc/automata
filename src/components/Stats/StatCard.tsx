@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 interface StatCardProps {
   label: string;
@@ -8,11 +8,9 @@ interface StatCardProps {
 
 export function StatCard({ label, value, className = '' }: StatCardProps) {
   return (
-    <div className={`bg-bg-secondary p-3 rounded-lg border border-bg-tertiary ${className}`}>
-      <div className="text-xs text-text-muted font-mono mb-1">{label}</div>
-      <div className="text-lg text-text-primary font-mono font-semibold">
-        {value}
-      </div>
+    <div className={`bg-bg-secondary border-bg-tertiary rounded-lg border p-3 ${className}`}>
+      <div className="text-text-muted mb-1 font-mono text-xs">{label}</div>
+      <div className="text-text-primary font-mono text-lg font-semibold">{value}</div>
     </div>
   );
 }

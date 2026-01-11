@@ -10,12 +10,7 @@ export function copyGrid(grid: Grid): Grid {
   return grid.map((row) => [...row]);
 }
 
-export function placePattern(
-  grid: Grid,
-  pattern: Grid,
-  startRow: number,
-  startCol: number
-): Grid {
+export function placePattern(grid: Grid, pattern: Grid, startRow: number, startCol: number): Grid {
   const newGrid = copyGrid(grid);
   const patternRows = pattern.length;
   const patternCols = pattern[0]?.length || 0;

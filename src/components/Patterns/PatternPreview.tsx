@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { type Grid } from '../../utils/gridHelpers';
 import { ColorMode, getColorForMode } from '../../utils/colors';
 import { Cell } from '../Grid/Cell';

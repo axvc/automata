@@ -11,14 +11,10 @@ interface BrushSelectorProps {
 
 const BRUSH_SIZES: BrushSize[] = [1, 3, 5];
 
-export function BrushSelector({
-  brushSize,
-  onChange,
-  className = '',
-}: BrushSelectorProps) {
+export function BrushSelector({ brushSize, onChange, className = '' }: BrushSelectorProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <span className="text-sm text-text-muted font-mono">Brush:</span>
+      <span className="text-text-muted font-mono text-sm">Brush:</span>
       {BRUSH_SIZES.map((size) => (
         <Button
           key={size}

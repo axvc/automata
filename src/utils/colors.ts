@@ -10,7 +10,8 @@ const COLOR_HEX: Record<ColorChannel, string> = {
 
 const GLOW_STYLES: Record<ColorChannel, string> = {
   cyan: '0 0 10px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(0, 212, 255, 0.2)',
-  orange: '0 0 10px rgba(255, 138, 0, 0.8), 0 0 20px rgba(255, 138, 0, 0.4), 0 0 40px rgba(255, 138, 0, 0.2)',
+  orange:
+    '0 0 10px rgba(255, 138, 0, 0.8), 0 0 20px rgba(255, 138, 0, 0.4), 0 0 40px rgba(255, 138, 0, 0.2)',
   pink: '0 0 10px rgba(255, 77, 109, 0.8), 0 0 20px rgba(255, 77, 109, 0.4), 0 0 40px rgba(255, 77, 109, 0.2)',
 };
 
@@ -20,11 +21,7 @@ function seededRandom(seed: number): number {
   return x - Math.floor(x);
 }
 
-export function getColorForMode(
-  mode: ColorMode,
-  row: number,
-  col: number
-): ColorChannel {
+export function getColorForMode(mode: ColorMode, row: number, col: number): ColorChannel {
   if (mode === 'random') {
     // Use deterministic randomness based on position
     const seed = row * 1000 + col;

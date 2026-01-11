@@ -33,13 +33,7 @@ function countAliveNeighbors(grid: Grid, row: number, col: number): number {
       const newRow = row + dr;
       const newCol = col + dc;
 
-      if (
-        newRow >= 0 &&
-        newRow < rows &&
-        newCol >= 0 &&
-        newCol < cols &&
-        grid[newRow][newCol]
-      ) {
+      if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && grid[newRow][newCol]) {
         count++;
       }
     }
@@ -135,10 +129,13 @@ export function useGameOfLife(rows: number, cols: number): UseGameOfLifeReturn {
     [isPlaying]
   );
 
-  const setGridState = useCallback((newGrid: Grid) => {
-    if (isPlaying) return;
-    setGrid(newGrid);
-  }, [isPlaying]);
+  const setGridState = useCallback(
+    (newGrid: Grid) => {
+      if (isPlaying) return;
+      setGrid(newGrid);
+    },
+    [isPlaying]
+  );
 
   const clear = useCallback(() => {
     if (isPlaying) return;

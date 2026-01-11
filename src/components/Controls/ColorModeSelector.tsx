@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from '../UI/Button';
 import { ColorMode } from '../../utils/colors';
 
@@ -14,14 +15,10 @@ const COLOR_MODES: { mode: ColorMode; label: string }[] = [
   { mode: 'pink', label: 'Pink' },
 ];
 
-export function ColorModeSelector({
-  colorMode,
-  onChange,
-  className = '',
-}: ColorModeSelectorProps) {
+export function ColorModeSelector({ colorMode, onChange, className = '' }: ColorModeSelectorProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <span className="text-sm text-text-muted font-mono">Color:</span>
+      <span className="text-text-muted font-mono text-sm">Color:</span>
       {COLOR_MODES.map(({ mode, label }) => (
         <Button
           key={mode}

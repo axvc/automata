@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 interface PopulationGraphProps {
@@ -38,15 +38,9 @@ export function PopulationGraph({
 
   if (displayData.length === 0) {
     return (
-      <div
-        className={`bg-bg-secondary p-4 rounded-lg border border-bg-tertiary ${className}`}
-      >
-        <div className="text-xs text-text-muted font-mono mb-2">
-          Population Graph
-        </div>
-        <div className="h-24 flex items-center justify-center text-text-dim text-sm">
-          No data
-        </div>
+      <div className={`bg-bg-secondary border-bg-tertiary rounded-lg border p-4 ${className}`}>
+        <div className="text-text-muted mb-2 font-mono text-xs">Population Graph</div>
+        <div className="text-text-dim flex h-24 items-center justify-center text-sm">No data</div>
       </div>
     );
   }
@@ -56,18 +50,10 @@ export function PopulationGraph({
     .join(' ');
 
   return (
-    <div
-      className={`bg-bg-secondary p-4 rounded-lg border border-bg-tertiary ${className}`}
-    >
-      <div className="text-xs text-text-muted font-mono mb-2">
-        Population Graph
-      </div>
-      <div className="h-24 relative">
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          className="w-full h-full"
-        >
+    <div className={`bg-bg-secondary border-bg-tertiary rounded-lg border p-4 ${className}`}>
+      <div className="text-text-muted mb-2 font-mono text-xs">Population Graph</div>
+      <div className="relative h-24">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-full w-full">
           <defs>
             <linearGradient id="populationGradient" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.3" />
@@ -91,10 +77,10 @@ export function PopulationGraph({
             transition={{ duration: 0.5, delay: 0.2 }}
           />
         </svg>
-        <div className="absolute top-0 right-0 text-xs text-text-muted font-mono">
+        <div className="text-text-muted absolute right-0 top-0 font-mono text-xs">
           {maxValue.toLocaleString()}
         </div>
-        <div className="absolute bottom-0 right-0 text-xs text-text-muted font-mono">
+        <div className="text-text-muted absolute bottom-0 right-0 font-mono text-xs">
           {minValue.toLocaleString()}
         </div>
       </div>

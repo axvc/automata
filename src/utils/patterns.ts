@@ -108,13 +108,7 @@ const LWSS: Pattern = {
 const MWSS: Pattern = {
   name: 'MWSS',
   description: 'Middleweight spaceship',
-  pattern: patternFromString([
-    '  OOOO ',
-    ' O    O',
-    'O      O',
-    'O      O',
-    ' OOOO  ',
-  ]),
+  pattern: patternFromString(['  OOOO ', ' O    O', 'O      O', 'O      O', ' OOOO  ']),
 };
 
 const HWSS: Pattern = {

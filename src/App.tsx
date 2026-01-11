@@ -54,7 +54,8 @@ function App() {
 
       // Размещаем паттерн в центре сетки
       const centerRow = Math.floor(DEFAULT_ROWS / 2) - Math.floor(pattern.pattern.length / 2);
-      const centerCol = Math.floor(DEFAULT_COLS / 2) - Math.floor((pattern.pattern[0]?.length || 0) / 2);
+      const centerCol =
+        Math.floor(DEFAULT_COLS / 2) - Math.floor((pattern.pattern[0]?.length || 0) / 2);
 
       const newGrid = placePattern(game.grid, pattern.pattern, centerRow, centerCol);
       game.setGrid(newGrid);
@@ -67,12 +68,12 @@ function App() {
   }, [game]);
 
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary">
+    <div className="bg-bg-primary text-text-primary min-h-screen">
       {/* Header */}
-      <header className="border-b border-bg-tertiary bg-bg-secondary">
+      <header className="border-bg-tertiary bg-bg-secondary border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-display font-bold">Cellular Automata</h1>
+            <h1 className="font-display text-3xl font-bold">Cellular Automata</h1>
             <div className="flex items-center gap-4">
               <GenerationCounter generation={game.stats.generation} />
               <PlaybackControls
@@ -89,11 +90,11 @@ function App() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {/* Left: Grid */}
           <div className="lg:col-span-3">
-            <div className="flex justify-center items-start">
-              <div className="bg-bg-secondary p-4 rounded-lg border border-bg-tertiary">
+            <div className="flex items-start justify-center">
+              <div className="bg-bg-secondary border-bg-tertiary rounded-lg border p-4">
                 <Grid
                   grid={game.grid}
                   onCellToggle={game.toggleCell}
@@ -106,9 +107,9 @@ function App() {
             </div>
 
             {/* Controls */}
-            <div className="mt-6 bg-bg-secondary p-4 rounded-lg border border-bg-tertiary">
+            <div className="bg-bg-secondary border-bg-tertiary mt-6 rounded-lg border p-4">
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-4 flex-wrap">
+                <div className="flex flex-wrap items-center gap-4">
                   <PlaybackControls
                     isPlaying={game.isPlaying}
                     onPlayPause={() => game.setIsPlaying(!game.isPlaying)}
@@ -117,8 +118,8 @@ function App() {
                     onRandom={handleRandom}
                   />
                 </div>
-                <div className="flex items-center gap-6 flex-wrap">
-                  <SpeedSlider speed={speed} onChange={setSpeed} className="flex-1 min-w-[200px]" />
+                <div className="flex flex-wrap items-center gap-6">
+                  <SpeedSlider speed={speed} onChange={setSpeed} className="min-w-[200px] flex-1" />
                   <BrushSelector brushSize={brushSize} onChange={setBrushSize} />
                   <ColorModeSelector colorMode={colorMode} onChange={setColorMode} />
                 </div>
@@ -127,31 +128,19 @@ function App() {
           </div>
 
           {/* Right: Patterns & Stats */}
-          <div className="lg:col-span-1 flex flex-col gap-6">
+          <div className="flex flex-col gap-6 lg:col-span-1">
             {/* Patterns */}
-            <div className="bg-bg-secondary p-4 rounded-lg border border-bg-tertiary max-h-[400px] overflow-y-auto">
-              <PatternLibrary
-                colorMode={colorMode}
-                onPatternSelect={handlePatternSelect}
-              />
+            <div className="bg-bg-secondary border-bg-tertiary max-h-[400px] overflow-y-auto rounded-lg border p-4">
+              <PatternLibrary colorMode={colorMode} onPatternSelect={handlePatternSelect} />
             </div>
 
             {/* Stats */}
-            <div className="bg-bg-secondary p-4 rounded-lg border border-bg-tertiary">
-              <h2 className="text-xl font-display font-bold mb-4">Stats</h2>
+            <div className="bg-bg-secondary border-bg-tertiary rounded-lg border p-4">
+              <h2 className="font-display mb-4 text-xl font-bold">Stats</h2>
               <div className="flex flex-col gap-3">
-                <StatCard
-                  label="Alive"
-                  value={game.stats.alive.toLocaleString()}
-                />
-                <StatCard
-                  label="Born"
-                  value={`+${game.stats.births.toLocaleString()}`}
-                />
-                <StatCard
-                  label="Died"
-                  value={`-${game.stats.deaths.toLocaleString()}`}
-                />
+                <StatCard label="Alive" value={game.stats.alive.toLocaleString()} />
+                <StatCard label="Born" value={`+${game.stats.births.toLocaleString()}`} />
+                <StatCard label="Died" value={`-${game.stats.deaths.toLocaleString()}`} />
                 <PopulationGraph data={populationHistory} />
               </div>
             </div>

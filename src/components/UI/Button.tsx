@@ -10,8 +10,10 @@ interface ButtonProps {
 }
 
 const variantStyles = {
-  primary: 'bg-accent-primary text-text-primary hover:bg-accent-primary/90 active:bg-accent-primary/80',
-  secondary: 'bg-bg-tertiary text-text-primary hover:bg-bg-tertiary/80 active:bg-bg-tertiary/70 border border-bg-tertiary',
+  primary:
+    'bg-accent-primary text-text-primary hover:bg-accent-primary/90 active:bg-accent-primary/80',
+  secondary:
+    'bg-bg-tertiary text-text-primary hover:bg-bg-tertiary/80 active:bg-bg-tertiary/70 border border-bg-tertiary',
   ghost: 'bg-transparent text-text-secondary hover:bg-bg-tertiary/50 active:bg-bg-tertiary/70',
 };
 
@@ -33,9 +35,9 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       className={`
-        font-mono font-medium rounded-md
+        rounded-md font-mono font-medium
         transition-all duration-150
-        disabled:opacity-50 disabled:cursor-not-allowed
+        disabled:cursor-not-allowed disabled:opacity-50
         ${variantStyles[variant]}
         ${sizeStyles[size]}
         ${className}

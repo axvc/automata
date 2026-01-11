@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { ColorChannel, getColorHex, getGlowStyle } from '../../utils/colors';
 
@@ -15,14 +15,13 @@ function CellComponent({ isAlive, color, size, className = '' }: CellProps) {
 
   return (
     <motion.div
-      className={`cell ${className}`}
+      className={`cell ${isAlive ? 'cell-pulse' : ''} ${className}`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
         backgroundColor: isAlive ? colorHex : 'transparent',
         boxShadow: isAlive ? glowStyle : 'none',
       }}
-      className={isAlive ? 'cell-pulse' : ''}
       initial={{ scale: 0, opacity: 0 }}
       animate={{
         scale: isAlive ? 1 : 0,

@@ -1,12 +1,12 @@
-import { useRef, useState, useCallback, useMemo } from 'react';
+import React, { useRef, useState, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Cell } from './Cell';
 import { GridOverlay } from './GridOverlay';
-import { type Grid } from '../../utils/gridHelpers';
+import { type Grid as GridType } from '../../utils/gridHelpers';
 import { ColorMode, getColorForMode } from '../../utils/colors';
 
 interface GridProps {
-  grid: Grid;
+  grid: GridType;
   onCellToggle: (row: number, col: number) => void;
   onCellSet?: (row: number, col: number, value: boolean) => void;
   colorMode: ColorMode;
@@ -65,12 +65,7 @@ export function GridComponent({
             const newRow = row + dr;
             const newCol = col + dc;
 
-            if (
-              newRow >= 0 &&
-              newRow < rows &&
-              newCol >= 0 &&
-              newCol < cols
-            ) {
+            if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
               if (onCellSet) {
                 onCellSet(newRow, newCol, targetValue);
               } else {
@@ -151,11 +146,7 @@ export function GridComponent({
               onMouseEnter={() => handleMouseMove(rowIndex, colIndex)}
               className="cursor-pointer"
             >
-              <Cell
-                isAlive={cell}
-                color={cellColors[rowIndex][colIndex]}
-                size={cellSize}
-              />
+              <Cell isAlive={cell} color={cellColors[rowIndex][colIndex]} size={cellSize} />
             </motion.div>
           ))
         )}

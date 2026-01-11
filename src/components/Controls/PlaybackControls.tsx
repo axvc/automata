@@ -1,3 +1,4 @@
+import React from 'react';
 import { Play, Pause, StepForward, Square, Shuffle } from 'lucide-react';
 import { Button } from '../UI/Button';
 
@@ -20,12 +21,7 @@ export function PlaybackControls({
 }: PlaybackControlsProps) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <Button
-        onClick={onPlayPause}
-        variant="primary"
-        size="md"
-        className="flex items-center gap-2"
-      >
+      <Button onClick={onPlayPause} variant="primary" size="md" className="flex items-center gap-2">
         {isPlaying ? (
           <>
             <Pause size={18} />
