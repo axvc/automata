@@ -15,6 +15,7 @@ Interactive visualization of Conway's Game of Life with a modern sci-fi aestheti
 - **Pattern Library** — 15+ preset patterns: Gliders, Spaceships, Oscillators, Guns
 - **Manual Editing** — Click, drag, and adjustable brush size (1×1, 3×3, 5×5)
 - **Live Statistics** — Generation counter, population graph, births/deaths per step
+- **Colony Status** — Dynamic status indicator (Empty, Evolution, Eternal, Dead)
 - **Visual Effects** — Shimmer loading states, cursor shine effects
 - **Dark Theme** — Sci-fi terminal aesthetic inspired by motion.dev
 
@@ -71,6 +72,9 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
 ## Project Structure
@@ -94,10 +98,7 @@ src/
 │   ├── gridHelpers.ts # Grid manipulation utilities
 │   └── colors.ts      # Color channel functions
 │
-└── styles/
-    ├── globals.css
-    ├── animations.css
-    └── variables.css
+└── App.tsx            # Main application component
 ```
 
 ## Patterns
@@ -128,7 +129,21 @@ R-pentomino, Diehard, Acorn
 /* Background */
 --bg-primary:   #0A0A0B
 --bg-secondary: #111113
+--bg-tertiary:  #1A1A1D
+
+/* Text */
+--text-primary: #FAFAFA
+--text-muted:   #71717A
 ```
+
+## Colony Status
+
+| Status | Condition |
+|--------|-----------|
+| Empty | No alive cells (never had a population) |
+| Evolution | Population is changing (births > 0 or deaths > 0) |
+| Eternal | Population is stable (births = 0 and deaths = 0, but alive > 0) |
+| Dead | Had a population, but all died out |
 
 ## References
 

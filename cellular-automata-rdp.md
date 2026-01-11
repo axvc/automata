@@ -3,103 +3,103 @@
 
 ---
 
-## 1. Обзор проекта
+## 1. Project Overview
 
-**Название:** Cellular Automata Playground  
-**Тип:** Интерактивное React-приложение  
-**Цель:** Визуализация работы клеточных автоматов (Game of Life) с современным, утончённым дизайном
+**Name:** Cellular Automata Playground  
+**Type:** Interactive React Application  
+**Goal:** Visualization of cellular automata (Game of Life) with a modern, refined design
 
-### Ключевые особенности
-- Визуальный стиль в духе motion.dev / sci-fi dashboards
-- Тёмная тема с RGB-свечением на ячейках
-- Subtle, smooth анимации (Framer Motion / Spring)
-- Интерактивные shine-эффекты от курсора
-- Shimmer-эффект для состояний загрузки
+### Key Features
+- Visual style inspired by motion.dev / sci-fi dashboards
+- Dark theme with RGB glow on cells
+- Subtle, smooth animations (Framer Motion / Spring)
+- Interactive cursor shine effects
+- Shimmer effect for loading states
 
 ---
 
-## 2. Функциональные требования
+## 2. Functional Requirements
 
-### 2.1 Игровое поле (Grid)
+### 2.1 Game Grid
 
-| Требование | Описание |
-|------------|----------|
-| Размер | Настраиваемая сетка (min 10×10, max 100×100) |
-| Ячейки | Квадратные, с bloom/glow эффектом при активации |
-| Цвета | Три канала свечения: cyan (#00D4FF), orange (#FF8A00), pink (#FF4D6D) |
-| Состояния | Dead (тёмный), Alive (свечение), Transitioning (fade) |
+| Requirement | Description |
+|-------------|-------------|
+| Size | Configurable grid (min 10×10, max 100×100) |
+| Cells | Square cells with bloom/glow effect on activation |
+| Colors | Three glow channels: cyan (#00D4FF), orange (#FF8A00), pink (#FF4D6D) |
+| States | Dead (dark), Alive (glowing), Transitioning (fade) |
 
-### 2.2 Управление симуляцией
+### 2.2 Simulation Controls
 
-- **Play/Pause** — запуск и остановка генерации
-- **Step** — одна итерация вручную
-- **Speed** — слайдер скорости (50ms – 1000ms)
-- **Clear** — очистка поля
-- **Random** — случайное заполнение (с настройкой плотности)
+- **Play/Pause** — start and stop generation
+- **Step** — manual single iteration
+- **Speed** — speed slider (50ms – 1000ms)
+- **Clear** — clear the grid
+- **Random** — random fill (with density setting)
 
-### 2.3 Паттерны
+### 2.3 Patterns
 
-**Предустановленные паттерны:**
+**Preset Patterns:**
 
-| Категория | Паттерны |
-|-----------|----------|
+| Category | Patterns |
+|----------|----------|
 | Still lifes | Block, Beehive, Loaf, Boat |
 | Oscillators | Blinker, Toad, Beacon, Pulsar, Pentadecathlon |
 | Spaceships | Glider, LWSS, MWSS, HWSS |
 | Guns | Gosper Glider Gun |
 | Methuselahs | R-pentomino, Diehard, Acorn |
 
-**Функции паттернов:**
-- Превью паттерна при наведении
-- Drag & drop на поле
-- Поворот (90°, 180°, 270°)
-- Отражение (horizontal/vertical)
+**Pattern Features:**
+- Pattern preview on hover
+- Drag & drop onto grid
+- Rotation (90°, 180°, 270°)
+- Flip (horizontal/vertical)
 
-### 2.4 Ручное редактирование
+### 2.4 Manual Editing
 
-- Click — toggle одной ячейки
-- Drag — рисование нескольких ячеек
-- Brush size — размер кисти (1×1, 3×3, 5×5)
+- Click — toggle single cell
+- Drag — draw multiple cells
+- Brush size — brush dimensions (1×1, 3×3, 5×5)
 
-### 2.5 Статистика
+### 2.5 Statistics
 
-- Текущая генерация (номер)
-- Живых клеток (count)
-- Births / Deaths за шаг
-- Population graph (последние 50 поколений)
+- Current generation (number)
+- Alive cells (count)
+- Births / Deaths per step
+- Population graph (last 50 generations)
 
-### 2.6 Статус колонии
+### 2.6 Colony Status
 
-| Статус | Условие |
-|--------|---------|
-| Empty | 0 живых клеток (никогда не было популяции) |
-| Evolution | Популяция изменяется (births > 0 или deaths > 0) |
-| Eternal | Популяция стабильна (births = 0 и deaths = 0, но alive > 0) |
-| Dead | Была популяция, но все вымерли (alive = 0 после существования) |
+| Status | Condition |
+|--------|-----------|
+| Empty | 0 alive cells (never had a population) |
+| Evolution | Population is changing (births > 0 or deaths > 0) |
+| Eternal | Population is stable (births = 0 and deaths = 0, but alive > 0) |
+| Dead | Had a population, but all died out (alive = 0 after existing) |
 
 ---
 
-## 3. Визуальный стиль
+## 3. Visual Style
 
-### 3.1 Эстетика
+### 3.1 Aesthetic
 
-**Направление:** Sci-fi terminal / Motion.dev aesthetic
+**Direction:** Sci-fi terminal / Motion.dev aesthetic
 
-**Ключевые характеристики:**
-- Тёмный фон (#0A0A0B или близкий)
-- Высокий контраст на активных элементах
-- Свечение (glow/bloom) как основной визуальный акцент
-- Точечная/сеточная текстура фона
-- Моноширинный шрифт для данных
+**Key Characteristics:**
+- Dark background (#0A0A0B or similar)
+- High contrast on active elements
+- Glow/bloom as the main visual accent
+- Dotted/grid texture background
+- Monospace font for data display
 
-### 3.2 Типографика
+### 3.2 Typography
 
 ```
-Основной:    JetBrains Mono / IBM Plex Mono / Fira Code
-Дисплейный:  Space Grotesk / Manrope (для заголовков)
+Primary:    JetBrains Mono / IBM Plex Mono / Fira Code
+Display:    Space Grotesk / Manrope (for headings)
 ```
 
-### 3.3 Цветовая палитра
+### 3.3 Color Palette
 
 ```css
 /* Background */
@@ -107,7 +107,7 @@
 --bg-secondary:  #111113;
 --bg-tertiary:   #1A1A1D;
 
-/* Cells - три канала */
+/* Cells - three channels */
 --cell-cyan:     #00D4FF;
 --cell-orange:   #FF8A00;
 --cell-pink:     #FF4D6D;
@@ -128,16 +128,16 @@
 --glow-pink:     0 0 20px rgba(255, 77, 109, 0.5);
 ```
 
-### 3.4 Эффекты ячеек
+### 3.4 Cell Effects
 
-**Референс из промпта:**
+**Reference from prompt:**
 > "invisible 3x3 grid and the lights just appear... make the lights square and have some bloom/glow to them"
 
-**Реализация:**
-- Ячейки без явных границ
-- При активации — мягкое появление (opacity + scale)
-- Bloom-эффект через box-shadow с blur
-- Случайный выбор цвета из трёх каналов (или режим выбора)
+**Implementation:**
+- Cells without explicit borders
+- On activation — soft appearance (opacity + scale)
+- Bloom effect via box-shadow with blur
+- Random color selection from three channels (or selection mode)
 
 ```css
 .cell.alive {
@@ -152,9 +152,9 @@
 
 ---
 
-## 4. Анимации и эффекты
+## 4. Animations and Effects
 
-### 4.1 Shimmer-эффект (для текста в загрузке)
+### 4.1 Shimmer Effect (for loading text)
 
 ```css
 .shimmer {
@@ -176,15 +176,15 @@
 }
 ```
 
-### 4.2 Cursor Shine-эффект
+### 4.2 Cursor Shine Effect
 
-**Принцип:** Радиальный градиент, следующий за курсором
+**Principle:** Radial gradient following the cursor
 
 ```jsx
-// Отслеживание позиции курсора
+// Cursor position tracking
 const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-// CSS переменные на элементе
+// CSS variables on element
 style={{
   '--mouse-x': `${mousePos.x}px`,
   '--mouse-y': `${mousePos.y}px`,
@@ -229,14 +229,14 @@ style={{
 ### 4.4 Staggered Grid Animation
 
 ```jsx
-// При загрузке / появлении поля
+// On load / grid appearance
 <motion.div
   variants={{
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.002, // Волна появления
+        staggerChildren: 0.002, // Appearance wave
         delayChildren: 0.1
       }
     }
@@ -246,15 +246,15 @@ style={{
 
 ---
 
-## 5. Компонентная структура
+## 5. Component Structure
 
 ```
 src/
 ├── components/
 │   ├── Grid/
-│   │   ├── Grid.tsx           # Основное поле
-│   │   ├── Cell.tsx           # Отдельная ячейка
-│   │   └── GridOverlay.tsx    # Shine-эффект
+│   │   ├── Grid.tsx           # Main grid
+│   │   ├── Cell.tsx           # Individual cell
+│   │   └── GridOverlay.tsx    # Shine effect
 │   │
 │   ├── Controls/
 │   │   ├── PlaybackControls.tsx
@@ -279,14 +279,14 @@ src/
 │       └── GlowContainer.tsx
 │
 ├── hooks/
-│   ├── useGameOfLife.ts       # Логика автомата
-│   ├── useMousePosition.ts    # Трекинг курсора
-│   └── useInterval.ts         # Таймер поколений
+│   ├── useGameOfLife.ts       # Automaton logic
+│   ├── useMousePosition.ts    # Cursor tracking
+│   └── useInterval.ts         # Generation timer
 │
 ├── utils/
-│   ├── patterns.ts            # Предустановленные паттерны
-│   ├── gridHelpers.ts         # Утилиты для работы с сеткой
-│   └── colors.ts              # Цветовые функции
+│   ├── patterns.ts            # Preset patterns
+│   ├── gridHelpers.ts         # Grid utilities
+│   └── colors.ts              # Color functions
 │
 ├── styles/
 │   ├── globals.css
@@ -298,17 +298,17 @@ src/
 
 ---
 
-## 6. Технологический стек
+## 6. Technology Stack
 
-| Категория | Технология |
-|-----------|------------|
+| Category | Technology |
+|----------|------------|
 | Framework | React 18 + TypeScript |
 | Styling | Tailwind CSS + CSS Variables |
 | Animations | Framer Motion |
-| State | Zustand (или useState для простоты) |
+| State | Zustand (or useState for simplicity) |
 | Build | Vite |
 
-### Зависимости
+### Dependencies
 
 ```json
 {
@@ -364,58 +364,58 @@ src/
 ## 8. Acceptance Criteria
 
 ### Must Have
-- [ ] Рабочий Game of Life с корректной логикой
-- [ ] Тёмная тема с RGB-свечением ячеек
+- [ ] Working Game of Life with correct logic
+- [ ] Dark theme with RGB cell glow
 - [ ] Play/Pause/Step/Clear/Random controls
-- [ ] Минимум 10 предустановленных паттернов
-- [ ] Ручное редактирование (click & drag)
-- [ ] Shimmer-эффект на загрузочных состояниях
-- [ ] Shine-эффект от курсора на интерактивных элементах
+- [ ] At least 10 preset patterns
+- [ ] Manual editing (click & drag)
+- [ ] Shimmer effect on loading states
+- [ ] Shine effect from cursor on interactive elements
 
 ### Should Have
-- [ ] Настраиваемый размер сетки
-- [ ] Drag & drop паттернов
-- [ ] Статистика (поколение, популяция)
-- [ ] График популяции
-- [ ] Три цветовых режима для ячеек
+- [ ] Configurable grid size
+- [ ] Drag & drop patterns
+- [ ] Statistics (generation, population)
+- [ ] Population graph
+- [ ] Three color modes for cells
 
 ### Nice to Have
-- [ ] Сохранение/загрузка конфигурации
-- [ ] Экспорт в GIF/видео
+- [ ] Save/load configuration
+- [ ] Export to GIF/video
 - [ ] Toroidal grid (wrap-around)
-- [ ] Кастомные правила (не только B3/S23)
+- [ ] Custom rules (not just B3/S23)
 
 ---
 
-## 9. Референсы
+## 9. References
 
-### Визуальные
-1. **motion.dev RGB Spinners** — стиль ячеек с glow
-2. **k_grajeda iOS controls** — качество UI-элементов
-3. **iamdavidhill file transfer** — терминальная эстетика
-4. **nonzeroexitcode spy dashboard** — sci-fi атмосфера
+### Visual
+1. **motion.dev RGB Spinners** — cell glow style
+2. **k_grajeda iOS controls** — UI element quality
+3. **iamdavidhill file transfer** — terminal aesthetic
+4. **nonzeroexitcode spy dashboard** — sci-fi atmosphere
 
-### Технические
+### Technical
 - [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 - [Framer Motion Documentation](https://www.framer.com/motion/)
 - [LifeWiki Pattern Catalog](https://conwaylife.com/wiki/)
 
 ---
 
-## 10. Этапы разработки
+## 10. Development Phases
 
-| Этап | Описание | Приоритет |
-|------|----------|-----------|
-| 1 | Базовая логика Game of Life (hook) | High |
-| 2 | Grid-компонент с базовым рендерингом | High |
-| 3 | Cell-компонент с glow-эффектом | High |
+| Phase | Description | Priority |
+|-------|-------------|----------|
+| 1 | Basic Game of Life logic (hook) | High |
+| 2 | Grid component with basic rendering | High |
+| 3 | Cell component with glow effect | High |
 | 4 | Playback controls | High |
-| 5 | Shimmer & Shine эффекты | Medium |
+| 5 | Shimmer & Shine effects | Medium |
 | 6 | Pattern library | Medium |
-| 7 | Статистика и график | Medium |
+| 7 | Statistics and graph | Medium |
 | 8 | Polish & animations | Low |
 
 ---
 
-*Документ создан: 2026-01-09*  
-*Версия: 1.0*
+*Document created: 2026-01-09*  
+*Version: 1.0*
