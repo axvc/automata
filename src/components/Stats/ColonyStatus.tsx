@@ -30,7 +30,7 @@ function getColonyState(alive: number, births: number, deaths: number, generatio
   return 'evolution';
 }
 
-const stateConfig: Record<ColonyState, { label: string; color: string; bgStyle: React.CSSProperties }> = {
+const stateConfig: Record<ColonyState, { label: string; color: string; bgStyle: React.CSSProperties; shimmer?: boolean }> = {
   empty: {
     label: 'Empty',
     color: 'text-text-muted',
@@ -38,8 +38,9 @@ const stateConfig: Record<ColonyState, { label: string; color: string; bgStyle: 
   },
   evolution: {
     label: 'Evolution',
-    color: 'text-cell-cyan',
+    color: 'shimmer-evolution',
     bgStyle: { backgroundColor: 'rgba(0, 212, 255, 0.15)' },
+    shimmer: true,
   },
   eternal: {
     label: 'Eternal',
@@ -61,10 +62,12 @@ export function ColonyStatus({ alive, births, deaths, generation, className = ''
     <div className={`flex items-center gap-2 ${className}`}>
       <span className="text-text-muted text-sm">Status:</span>
       <span
-        className={`rounded px-2 py-0.5 font-mono text-sm font-medium ${config.color}`}
+        className="rounded px-2 py-0.5 font-mono text-sm font-medium"
         style={config.bgStyle}
       >
-        {config.label}
+        <span className={config.shimmer ? 'shimmer-evolution' : config.color}>
+          {config.label}
+        </span>
       </span>
     </div>
   );

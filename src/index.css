@@ -116,3 +116,29 @@
 *::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* Shimmer animation for Evolution status */
+@keyframes shimmer-evolution {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-evolution {
+  background: linear-gradient(
+    90deg,
+    var(--cell-cyan) 0%,
+    #5eefff 25%,
+    #ffffff 50%,
+    #5eefff 75%,
+    var(--cell-cyan) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-evolution 2.5s ease-in-out infinite;
+}
