@@ -66,6 +66,22 @@
   .font-mono {
     font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
   }
+
+  .main-content-height {
+    height: 100vh;
+  }
+
+  @media (min-width: 1024px) {
+    .main-content-height {
+      height: 944px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .main-content-height {
+      height: 888px;
+    }
+  }
 }
 
 /* Custom Scrollbar */

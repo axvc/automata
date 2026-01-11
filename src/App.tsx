@@ -89,10 +89,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main
-        className="container mx-auto px-4 py-6"
-        style={{ height: 'calc(100vh - 74px)' }}
-      >
+      <main className="main-content-height container mx-auto px-4 py-6">
         <div className="flex h-full gap-6">
           {/* Left: Grid + Controls + Stats */}
           <div className="flex flex-1 flex-col gap-6 overflow-auto">
