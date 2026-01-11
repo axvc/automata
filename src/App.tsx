@@ -10,6 +10,7 @@ import { PatternLibrary } from './components/Patterns/PatternLibrary';
 import { GenerationCounter } from './components/Stats/GenerationCounter';
 import { StatCard } from './components/Stats/StatCard';
 import { PopulationGraph } from './components/Stats/PopulationGraph';
+import { ColonyStatus } from './components/Stats/ColonyStatus';
 import { type Pattern } from './utils/patterns';
 import { placePattern } from './utils/gridHelpers';
 import { type ColorMode } from './utils/colors';
@@ -127,7 +128,15 @@ function App() {
 
             {/* Stats */}
             <div className="bg-bg-secondary border-bg-tertiary shrink-0 rounded-lg border p-4">
-              <h2 className="font-display mb-4 text-xl font-bold">Stats</h2>
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="font-display text-xl font-bold">Stats</h2>
+                <ColonyStatus
+                  alive={game.stats.alive}
+                  births={game.stats.births}
+                  deaths={game.stats.deaths}
+                  generation={game.stats.generation}
+                />
+              </div>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <StatCard label="Alive" value={game.stats.alive.toLocaleString()} />
                 <StatCard label="Born" value={game.stats.births.toLocaleString()} />
