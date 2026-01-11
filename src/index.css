@@ -3,6 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
   :root {
     /* Background */
     --bg-primary: #0a0a0b;
