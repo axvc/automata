@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { Pattern } from '../../utils/patterns';
 import { PatternPreview } from './PatternPreview';
 import { ColorMode } from '../../utils/colors';
@@ -12,30 +11,14 @@ interface PatternCardProps {
 }
 
 export function PatternCard({ pattern, colorMode, onSelect, className = '' }: PatternCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
-      className={`bg-bg-secondary border-bg-tertiary interactive-element cursor-pointer rounded-lg border p-3 ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <div
+      className={`bg-bg-secondary border-bg-tertiary cursor-pointer rounded-lg border p-3 transition-colors duration-150 hover:border-text-dim hover:bg-bg-tertiary/50 active:bg-bg-tertiary ${className}`}
       onClick={() => onSelect(pattern)}
     >
       <div className="flex flex-col gap-2">
         <div className="flex min-h-[60px] items-center justify-center">
-          {isHovered ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              <PatternPreview pattern={pattern.pattern} colorMode={colorMode} cellSize={8} />
-            </motion.div>
-          ) : (
-            <PatternPreview pattern={pattern.pattern} colorMode={colorMode} cellSize={6} />
-          )}
+          <PatternPreview pattern={pattern.pattern} colorMode={colorMode} cellSize={6} />
         </div>
         <div className="text-center">
           <div className="text-text-primary font-mono text-sm font-semibold">{pattern.name}</div>
@@ -44,6 +27,6 @@ export function PatternCard({ pattern, colorMode, onSelect, className = '' }: Pa
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
