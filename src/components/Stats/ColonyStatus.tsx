@@ -30,26 +30,26 @@ function getColonyState(alive: number, births: number, deaths: number, generatio
   return 'evolution';
 }
 
-const stateConfig: Record<ColonyState, { label: string; color: string; bgColor: string }> = {
+const stateConfig: Record<ColonyState, { label: string; color: string; bgStyle: React.CSSProperties }> = {
   empty: {
     label: 'Empty',
     color: 'text-text-muted',
-    bgColor: 'bg-bg-tertiary',
+    bgStyle: { backgroundColor: 'var(--bg-tertiary)' },
   },
   evolution: {
     label: 'Evolution',
     color: 'text-cell-cyan',
-    bgColor: 'bg-cell-cyan/10',
+    bgStyle: { backgroundColor: 'rgba(0, 212, 255, 0.15)' },
   },
   eternal: {
     label: 'Eternal',
     color: 'text-cell-orange',
-    bgColor: 'bg-cell-orange/10',
+    bgStyle: { backgroundColor: 'rgba(255, 138, 0, 0.15)' },
   },
   dead: {
     label: 'Dead',
     color: 'text-cell-pink',
-    bgColor: 'bg-cell-pink/10',
+    bgStyle: { backgroundColor: 'rgba(255, 77, 109, 0.15)' },
   },
 };
 
@@ -61,7 +61,8 @@ export function ColonyStatus({ alive, births, deaths, generation, className = ''
     <div className={`flex items-center gap-2 ${className}`}>
       <span className="text-text-muted text-sm">Status:</span>
       <span
-        className={`rounded px-2 py-0.5 font-mono text-sm font-medium ${config.color} ${config.bgColor}`}
+        className={`rounded px-2 py-0.5 font-mono text-sm font-medium ${config.color}`}
+        style={config.bgStyle}
       >
         {config.label}
       </span>
