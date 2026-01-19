@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
-import { motion } from 'framer-motion';
-import { ColorChannel, getColorHex, getGlowStyle } from '../../utils/colors';
+import { ColorChannel, getColorHex } from '../../utils/colors';
 
 interface CellProps {
   isAlive: boolean;
@@ -9,28 +8,34 @@ interface CellProps {
   className?: string;
 }
 
+// Simplified single-layer glow for better performance
+const getOptimizedGlow = (color: ColorChannel): string => {
+  const glowColors = {
+    cyan: 'rgba(0, 212, 255, 0.6)',
+    orange: 'rgba(255, 138, 0, 0.6)',
+    pink: 'rgba(255, 77, 109, 0.6)',
+  };
+  return `0 0 15px ${glowColors[color]}`;
+};
+
 function CellComponent({ isAlive, color, size, className = '' }: CellProps) {
   const colorHex = getColorHex(color);
-  const glowStyle = isAlive ? getGlowStyle(color) : '';
+  const glowStyle = isAlive ? getOptimizedGlow(color) : 'none';
 
   return (
-    <motion.div
-      className={`cell ${isAlive ? 'cell-pulse' : ''} ${className}`}
+    <div
+      className={`cell ${isAlive ? 'cell-alive' : 'cell-dead'} ${className}`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
         backgroundColor: isAlive ? colorHex : 'transparent',
-        boxShadow: isAlive ? glowStyle : 'none',
-      }}
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{
-        scale: isAlive ? 1 : 0,
+        boxShadow: glowStyle,
+        transform: isAlive ? 'scale(1)' : 'scale(0)',
         opacity: isAlive ? 1 : 0,
-      }}
-      transition={{
-        type: 'spring',
-        stiffness: 500,
-        damping: 30,
+        // CSS transitions - much faster than spring animations
+        transition: 'transform 0.2s ease-out, opacity 0.2s ease-out, background-color 0.2s ease-out',
+        // GPU acceleration hint
+        willChange: 'transform, opacity',
       }}
     />
   );
