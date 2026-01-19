@@ -20,6 +20,9 @@ export function GridOverlay({ gridRef, className = '' }: GridOverlayProps) {
         )`,
         opacity: mousePos.x === 0 && mousePos.y === 0 ? 0 : 1,
         transition: 'opacity 0.3s ease',
+        // GPU acceleration - force composite layer
+        willChange: 'opacity',
+        transform: 'translateZ(0)',
       }}
     />
   );

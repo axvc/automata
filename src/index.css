@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer base {
+  /* Performance optimizations for smooth animations */
+  * {
+    /* Enable hardware acceleration for transforms and opacity */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    /* Ensure smooth scrolling and animations */
+    scroll-behavior: smooth;
+  }
+
   html,
   body {
     height: 100%;
@@ -12,6 +24,10 @@
   #root {
     height: 100%;
     overflow: hidden;
+    /* Force GPU compositing for better performance */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   :root {
@@ -65,6 +81,25 @@
 
   .font-mono {
     font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
+  }
+
+  /* Optimized cell animations */
+  .cell {
+    /* Force GPU layer for smooth animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    /* Reduce repaints */
+    contain: layout style paint;
+  }
+
+  .cell-alive {
+    /* Hint browser about upcoming changes */
+    will-change: transform, opacity;
+  }
+
+  .cell-dead {
+    /* Remove will-change when not animating to save memory */
+    will-change: auto;
   }
 
   .main-content-height {

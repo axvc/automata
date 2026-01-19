@@ -1,5 +1,4 @@
 import React, { useRef, useState, useCallback, useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { Cell } from './Cell';
 import { GridOverlay } from './GridOverlay';
 import { type Grid as GridType } from '../../utils/gridHelpers';
@@ -14,22 +13,6 @@ interface GridProps {
   cellSize?: number;
   className?: string;
 }
-
-const GRID_VARIANTS = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.002,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const CELL_VARIANTS = {
-  hidden: { opacity: 0, scale: 0 },
-  visible: { opacity: 1, scale: 1 },
-};
 
 export function GridComponent({
   grid,
@@ -126,31 +109,27 @@ export function GridComponent({
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <motion.div
+      <div
         className="grid gap-0"
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
           gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
         }}
-        variants={GRID_VARIANTS}
-        initial="hidden"
-        animate="visible"
       >
         {grid.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
-            <motion.div
+            <div
               key={`${rowIndex}-${colIndex}`}
-              variants={CELL_VARIANTS}
               onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
               onMouseEnter={() => handleMouseMove(rowIndex, colIndex)}
               className="cursor-pointer"
             >
               <Cell isAlive={cell} color={cellColors[rowIndex][colIndex]} size={cellSize} />
-            </motion.div>
+            </div>
           ))
         )}
-      </motion.div>
+      </div>
       <GridOverlay gridRef={gridRef} />
     </div>
   );
